@@ -23,7 +23,6 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Optional global subtle shadow */
 .shadow {
   box-shadow: 0 12px 30px rgba(2, 6, 23, 0.5);
 }
@@ -44,7 +43,7 @@
   }
 }
 
-/* General layout helpers */
+
 html,
 body,
 #root {
@@ -61,3 +60,95 @@ body,
   padding: 0 1rem;
 }
 
+.container, section { overflow: visible !important; }
+
+.text-gradient {
+  background: linear-gradient(90deg, #7c3aed, #fb7185, #fb923c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1, h2, h3 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.overflow-visible { overflow: visible !important; }
+.bg-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+}
+
+.bg-wave {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+  border-radius: 10px;
+  min-height: 72px;
+}
+
+
+.wave-lines {
+  background-image: linear-gradient(
+    to right,
+    rgba(255,255,255,0.01) 0px,
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  background-size: 12px 100%;
+  opacity: 0.06;
+}
+
+
+button { -webkit-tap-highlight-color: transparent; }
+
+
+.signup-input {
+  background: rgba(255,255,255,0.03);
+  color: #e6eef8;             
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  outline: none;
+  min-width: 220px;
+}
+.signup-input::placeholder {
+  color: rgba(255,255,255,0.45);  
+}
+.signup-input:focus {
+  box-shadow: 0 6px 18px rgba(124,58,237,0.12);
+  border-color: rgba(124,58,237,0.6);
+}
+
+@media (max-width: 640px) {
+  .player-card { width: 92% !important; margin: 0 auto; }
+}
+
+
+.player-card.playing {
+  box-shadow:
+    0 30px 60px rgba(2,6,23,0.6),
+    0 8px 30px rgba(124,58,237,0.06); 
+  transform: translateY(-2px);
+  transition: box-shadow 260ms ease, transform 160ms ease;
+}
+
+.player-card.playing .bg-wave::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 320px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(124,58,237,0.06), rgba(124,58,237,0.00) 60%);
+  pointer-events: none;
+  filter: blur(10px);
+  opacity: 1;
+  transition: opacity 260ms ease;
+}
+
+.player-card.playing button {
+  box-shadow: 0 8px 30px rgba(124,58,237,0.16);
+}

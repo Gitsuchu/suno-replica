@@ -1,33 +1,60 @@
-import { useRef, useState, useEffect } from 'react'
+// src/lib/useAudio.js
+import { useEffect, useRef, useState } from "react";
 
+export default function useAudio(src) {
+  const audioRef = useRef(typeof Audio !== "undefined" ? new Audio(src) : null);
+  const [playing, setPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-export default function useAudio(src){
-const audioRef = useRef(new Audio(src))
-const [playing, setPlaying] = useState(false)
-const [time, setTime] = useState(0)
-const [duration, setDuration] = useState(0)
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
+    // update metadata
+    const onLoaded = () => {
+      setDuration(audio.duration || 0);
+      setReady(true);
+    };
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onEnd = () => setPlaying(false);
 
-useEffect(()=>{
-const a = audioRef.current
-const onTime = ()=> setTime(a.currentTime)
-const onMeta = ()=> setDuration(a.duration || 0)
-a.addEventListener('timeupdate', onTime)
-a.addEventListener('loadedmetadata', onMeta)
-return ()=>{
-a.removeEventListener('timeupdate', onTime)
-a.removeEventListener('loadedmetadata', onMeta)
-a.pause()
-}
-}, [])
+    audio.addEventListener("loadedmetadata", onLoaded);
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("ended", onEnd);
 
+    // cleanup
+    return () => {
+      audio.removeEventListener("loadedmetadata", onLoaded);
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, [src]);
 
-const toggle = ()=>{
-const a = audioRef.current
-if(playing){ a.pause(); setPlaying(false) } else { a.play(); setPlaying(true) }
-}
-const seek = (t)=>{ audioRef.current.currentTime = t }
+  // react to src or playing state
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.src = src;
+    if (playing) audio.play().catch(() => setPlaying(false));
+    else audio.pause();
+  }, [playing, src]);
 
+  const toggle = () => setPlaying((p) => !p);
+  const seek = (t) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = t;
+    setCurrentTime(t);
+  };
 
-return { audioRef, playing, toggle, time, duration, seek }
+  return {
+    playing,
+    toggle,
+    ready,
+    currentTime,
+    duration,
+    seek,
+  };
 }

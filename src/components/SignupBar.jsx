@@ -19,11 +19,12 @@ export default function SignupBar() {
 
         <div className="flex items-center gap-3 flex-1 md:flex-none md:w-auto">
           <input
-            placeholder="Enter your email"
-            className="flex-1 md:flex-none bg-white/3 px-4 py-2 rounded-md border border-white/8 text-slate-100 placeholder:text-slate-400 focus:outline-none"
             type="email"
+            placeholder="Enter your email"
+            className="signup-input"
             aria-label="Email address"
           />
+
           <button className="px-4 py-2 rounded-md bg-gradient-to-r from-brand-500 to-warm-500 text-white font-medium shadow">
             Sign Up
           </button>
