@@ -14,7 +14,15 @@ export default function Hero() {
             style={{ WebkitFontSmoothing: "antialiased" }}
           >
             Create audio with <br />
-            <span className="block">generative <span className="text-gradient">AI</span></span>
+            Generative AI -{" "}<br />
+            <span className="inline-flex items-center text-gradient">
+              <Typewriter
+                words={[" Music", " Beats", " Voices", " Sounds"]}
+                speed={100}
+                pause={1200}
+                className="text-gradient"
+              />
+            </span>
           </h1>
 
           <p className="mt-6 text-slate-300 max-w-2xl">
