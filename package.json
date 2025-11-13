@@ -1,0 +1,1 @@
+{"name":"suno-clone","version":"1.0.0","private":true,"scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"dependencies":{"framer-motion":"^10.18.0","react":"^18.3.1","react-dom":"^18.3.1"},"devDependencies":{"@vitejs/plugin-react":"^4.0.0","autoprefixer":"^10.4.22","postcss":"^8.5.6","tailwindcss":"^3.4.18","vite":"^7.2.2"}}
