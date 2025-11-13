@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 export default function Typewriter({ words = [], speed = 100, pause = 1400 }) {
-  const [index, setIndex] = useState(0);       // current word index
-  const [display, setDisplay] = useState("");  // visible text
+  const [index, setIndex] = useState(0);
+  const [display, setDisplay] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {

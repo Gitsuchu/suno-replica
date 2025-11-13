@@ -1,4 +1,4 @@
-/* Header.jsx */
+
 export default function Header() {
   return (
     <header className="flex justify-between items-center py-5 px-10 bg-transparent">

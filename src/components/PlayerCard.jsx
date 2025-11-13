@@ -1,4 +1,4 @@
-// src/components/PlayerCard.jsx
+
 import React from "react";
 import useAudio from "../lib/useAudio";
 
@@ -21,7 +21,6 @@ export default function PlayerCard({ title, artist, src }) {
           <div className="text-slate-400 text-sm mt-1">{artist} · {formatTime(duration)}</div>
         </div>
 
-        {/* circular play button */}
         <button
           onClick={toggle}
           aria-pressed={playing}
@@ -32,7 +31,6 @@ export default function PlayerCard({ title, artist, src }) {
         </button>
       </div>
 
-      {/* waveform area (visual only) */}
       <div className="mt-4 rounded-lg bg-wave p-3 relative overflow-hidden">
         <div className="wave-lines absolute inset-0 pointer-events-none" aria-hidden="true" />
         <div className="flex justify-between text-xs text-slate-400 mt-3 px-1">

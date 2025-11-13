@@ -20,7 +20,7 @@ export default function Carousel() {
     if (el && !itemRefs.current.includes(el)) itemRefs.current.push(el);
   };
 
-  // Detect active card
+
   useEffect(() => {
     const opts = {
       root: scrollerRef.current,
@@ -41,7 +41,7 @@ export default function Carousel() {
     return () => obs.disconnect();
   }, []);
 
-  // Auto-scroll
+
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -95,7 +95,6 @@ export default function Carousel() {
           ))}
         </div>
 
-        {/* navigation arrows */}
         <div className="absolute right-3 top-2 hidden md:flex gap-2">
           <button
             aria-label="Scroll left"
@@ -124,7 +123,6 @@ export default function Carousel() {
         </div>
       </div>
 
-      {/* dot indicators */}
       <div className="flex justify-center mt-4 gap-2">
         {items.map((_, i) => (
           <button

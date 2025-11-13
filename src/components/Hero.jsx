@@ -1,4 +1,4 @@
-// src/components/Hero.jsx
+
 import React from "react";
 import Typewriter from "./Typewriter";
 import PlayerCard from "./PlayerCard";
@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="container mt-10 overflow-visible">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        {/* LEFT: headline + CTA */}
+
         <div className="overflow-visible">
           <h1
             className="text-[64px] sm:text-[72px] md:text-[88px] lg:text-[96px] font-extrabold leading-[0.98] md:leading-[0.98] -tracking-tight overflow-visible"
@@ -41,7 +41,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: two player cards stacked */}
+
         <div className="flex flex-col gap-6">
           <PlayerCard title="Starling Echoes" artist="Velvet Orion" src="/sample1.mp3" />
           <PlayerCard title="Sunset Loops" artist="Neon Moth" src="/sample2.mp3" />

@@ -1,4 +1,4 @@
-// src/components/SignupBar.jsx
+
 import React from "react";
 import { motion } from "framer-motion";
 

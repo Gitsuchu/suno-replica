@@ -5,7 +5,7 @@ import SignupBar from "./components/SignupBar";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 
-export default function App(){
+export default function App() {
   return (
     <div className="min-h-screen bg-page text-white">
       <Header />
